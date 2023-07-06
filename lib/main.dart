@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'colors.dart';
-
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home:Calculator()
-  ));
+    )
+  );
 }
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -16,19 +15,56 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+
+  double firstNum=0.0;
+  double secondNum=0.0;
+  var input="  ";
+  var output=" ";
+  var operation = ' ';
+
+  //onButtonClick();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundcolor,
       body: Column(
         children: [
-          Expanded(child: Container(color: numbackgroundcolor,)),
+          Expanded(child:
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(12),
+            color: numbackgroundcolor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children:[
+                  Text(input, style: const TextStyle(
+                    fontSize: 65,
+                    color: blacknumkey,
+                    fontFamily:'Nothing',
+                  ),),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(output, style: TextStyle(
+                  fontSize: 48,
+                  color: blacknumkey,
+                  fontFamily:'Nothing',
+                ),),
+                SizedBox(
+                  height: 40,
+                ),
+                ],
+            ),
+            ),
+          ),
           Row(
             children: [
                 button(text:"AC", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"()", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"%", tColor: whitenumkey, buttonBgColor: blacknumkey),
-                button(text:"", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:" ", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -67,26 +103,26 @@ class _CalculatorState extends State<Calculator> {
       ),
     );
   }
-
   Widget button({
       text, tColor, buttonBgColor}
       ){
      return Expanded(
        child: Container(
-         margin: EdgeInsets.all(8),
+         margin: const EdgeInsets.all(8),
          child: ElevatedButton(
            style: ElevatedButton.styleFrom(
-             shape: CircleBorder(
+             shape: const CircleBorder(
 
              ),
-             padding: EdgeInsets.all(22),
+             padding: const EdgeInsets.all(22),
              primary: buttonBgColor,
            ),
            onPressed: (){},
            child:Text(text, style:TextStyle(
-               fontSize: 25,
+               fontSize: 30,
                fontWeight: FontWeight.bold,
-               color: tColor)),
+               color: tColor,
+               fontFamily: 'Nothing')),
          ),
        ),
      );
