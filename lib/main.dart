@@ -25,10 +25,10 @@ class _CalculatorState extends State<Calculator> {
           Expanded(child: Container(color: numbackgroundcolor,)),
           Row(
             children: [
-                button(text:"AC", tColor: blacknumkey, buttonBgColor: whitenumkey),
-                button(text:"()", tColor: blacknumkey, buttonBgColor: whitenumkey),
-                button(text:"%", tColor: blacknumkey, buttonBgColor: whitenumkey),
-                button(text:"", tColor: blacknumkey, buttonBgColor: whitenumkey),
+                button(text:"AC", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"()", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"%", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -36,7 +36,7 @@ class _CalculatorState extends State<Calculator> {
               button(text:"7", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"8", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"9", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:"x", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:"x", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -44,7 +44,7 @@ class _CalculatorState extends State<Calculator> {
               button(text:"6", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"5", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"4", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:"-", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:"-", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -52,7 +52,7 @@ class _CalculatorState extends State<Calculator> {
               button(text:"3", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"2", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"1", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:"+", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:"+", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -60,7 +60,7 @@ class _CalculatorState extends State<Calculator> {
               button(text:"0", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:".", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:" ", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:"=", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:"=", tColor: whitenumkey, buttonBgColor: rednumkey),
             ],
           ),
         ],
