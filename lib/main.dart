@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 import 'colors.dart';
 void main() {
   runApp(const MaterialApp(
@@ -22,7 +23,25 @@ class _CalculatorState extends State<Calculator> {
   var output=" ";
   var operation = ' ';
 
-  //onButtonClick();
+  onButtonClick(value){
+
+    if(value=="AC"){
+      input="";
+      output="";
+    }
+    else if(value=="<"){
+        input= input.substring(0,input.length-1);
+    }
+    else if(value=="=")
+      {
+        var userInput=input;
+        userInput= input.replaceAll("x", "*");
+        Parser p= Parser();
+        Expression expression=p.parse(userInput);
+        ContextModel cm=ContextModel();
+        var finalValue = expression.evaluate(type, context)
+      }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +136,7 @@ class _CalculatorState extends State<Calculator> {
              padding: const EdgeInsets.all(22),
              primary: buttonBgColor,
            ),
-           onPressed: (){},
+           onPressed: ()=> onButtonClick(text),
            child:Text(text, style:TextStyle(
                fontSize: 30,
                fontWeight: FontWeight.bold,
