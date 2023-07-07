@@ -65,7 +65,19 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text("CALCULATOR", style: TextStyle(color: blacknumkey, fontFamily:'Jane', fontSize: 20, fontWeight: FontWeight.normal)),
+        title:const Text("CALCULATOR", style: TextStyle(color: blacknumkey, fontFamily:'Jane', fontSize: 30, fontWeight: FontWeight.normal)),
+        leading: IconButton(
+          padding: const EdgeInsets.only(left:20),
+          icon: Image.asset('assests/drawer_icon.png'),
+          onPressed: (){},
+        ),
+        actions: [
+          Row(
+            children: [
+              IconButton(onPressed: (){}, icon: Image.asset('assests/history_icon.png'), padding:const EdgeInsets.only(right:30),),
+            ],
+          ),
+        ],
         centerTitle: true,
         backgroundColor: backgroundcolor,
         elevation: 0,
@@ -107,7 +119,7 @@ class _CalculatorState extends State<Calculator> {
           Row(
             children: [
                 button(text:"AC", tColor: whitenumkey, buttonBgColor: blacknumkey),
-                button(text:"()", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"( )", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"%", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"<", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
