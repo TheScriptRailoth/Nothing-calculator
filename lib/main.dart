@@ -85,35 +85,59 @@ class _CalculatorState extends State<Calculator> {
       backgroundColor: backgroundcolor,
       body: Column(
         children: [
-          Expanded(child:
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(12),
-            color: backgroundcolor,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children:[
-                  Text(
-                    hideinput? ' ':input,
-                    style: const TextStyle(
-                    fontSize: 65,
-                    color: blacknumkey,
-                    fontFamily:'Nothing',
-                  ),),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(output, style:TextStyle(
-                  fontSize: outputSize,
-                  color: blacknumkey,
-                  fontFamily:'Nothing',
-                ),),
-                const SizedBox(
-                  height: 40,
-                ),
-                ],
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Card(
+              elevation: 0,
+              child: Container(
+              width: 350,
+              height: 260,
+              padding: EdgeInsets.all(12),
+              color: numbackgroundcolor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children:[
+                  const SizedBox(
+                    height: 60,
+                  ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        reverse: true,
+                        child: Text(
+                          hideinput? ' ':input,
+                          style: const TextStyle(
+                          fontSize: 65,
+                          color: blacknumkey,
+                          fontFamily:'Nothing',
+                         ),
+                        ),
+                      ),
+                    ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      reverse: true,
+                      child: Text(output,
+                        style:TextStyle(
+                          fontSize: outputSize,
+                          color: blacknumkey,
+                          fontFamily:'Nothing',
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  ],
+              ),
+              ),
             ),
           ),
           Row(
@@ -121,7 +145,7 @@ class _CalculatorState extends State<Calculator> {
                 button(text:"AC", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"( )", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"%", tColor: whitenumkey, buttonBgColor: blacknumkey),
-                button(text:"<", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"/", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -152,7 +176,24 @@ class _CalculatorState extends State<Calculator> {
             children: [
               button(text:"0", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:".", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:" ", tColor: blacknumkey, buttonBgColor: whitenumkey),
+
+          Expanded(
+            child: Container(
+            margin: const EdgeInsets.all(8),
+            child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            padding: const EdgeInsets.all(22),
+            primary: whitenumkey,
+            ),
+            onPressed: ()=> onButtonClick("<"),
+            child: Image.asset('assests/clear_icon.png'),
+            ),
+          ),
+        ),
+
+
+
               button(text:"=", tColor: whitenumkey, buttonBgColor: rednumkey),
             ],
           ),
