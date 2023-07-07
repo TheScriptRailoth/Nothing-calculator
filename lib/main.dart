@@ -19,10 +19,11 @@ class _CalculatorState extends State<Calculator> {
 
   double firstNum=0.0;
   double secondNum=0.0;
-  var input="  ";
+  var input="0";
   var output=" ";
   var operation = ' ';
-
+  var hideinput=false;
+  var outputSize=48.0;
   onButtonClick(value){
 
     if(value=="AC"){
@@ -30,17 +31,34 @@ class _CalculatorState extends State<Calculator> {
       output="";
     }
     else if(value=="<"){
+      if(input.isNotEmpty) {
         input= input.substring(0,input.length-1);
+      }
     }
     else if(value=="=")
       {
-        var userInput=input;
-        userInput= input.replaceAll("x", "*");
-        Parser p= Parser();
-        Expression expression=p.parse(userInput);
-        ContextModel cm=ContextModel();
-        var finalValue = expression.evaluate(type, context)
+        if(input.isNotEmpty) {
+          var userInput = input;
+          userInput = input.replaceAll("x", "*");
+          Parser p = Parser();
+          Expression expression = p.parse(userInput);
+          ContextModel cm = ContextModel();
+          var finalValue = expression.evaluate(EvaluationType.REAL, cm);
+          output = finalValue.toString();
+          if(output.endsWith(".0")) {
+            output=output.substring(0,output.length-2);
+          }
+          input=output;
+          hideinput=true;
+          outputSize=65;
+        }
       }
+    else{
+      input=input+value;
+      hideinput=false;
+      outputSize=48;
+    }
+    setState(() {});
   }
 
   @override
@@ -58,16 +76,18 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children:[
-                  Text(input, style: const TextStyle(
+                  Text(
+                    hideinput? ' ':input,
+                    style: const TextStyle(
                     fontSize: 65,
                     color: blacknumkey,
                     fontFamily:'Nothing',
                   ),),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(output, style: TextStyle(
-                  fontSize: 48,
+                Text(output, style:TextStyle(
+                  fontSize: outputSize,
                   color: blacknumkey,
                   fontFamily:'Nothing',
                 ),),
@@ -114,7 +134,7 @@ class _CalculatorState extends State<Calculator> {
             children: [
               button(text:"0", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:".", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:" ", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:"<", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"=", tColor: whitenumkey, buttonBgColor: rednumkey),
             ],
           ),
