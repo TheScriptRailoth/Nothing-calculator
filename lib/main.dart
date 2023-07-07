@@ -118,22 +118,21 @@ class _CalculatorState extends State<Calculator> {
                   const SizedBox(
                     height: 30,
                   ),
-
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      reverse: true,
-                      child: Text(output,
-                        style:TextStyle(
-                          fontSize: outputSize,
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    reverse: true,
+                    child:Text(output,
+                        style:const TextStyle(
+                          fontSize: 48,
                           color: blacknumkey,
                           fontFamily:'Nothing',
                         ),
                       ),
-                    ),
                   ),
+                ),
                   const SizedBox(
-                    height: 40,
+                    height: 5,
                   ),
                   ],
               ),
