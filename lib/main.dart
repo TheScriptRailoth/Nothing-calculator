@@ -15,7 +15,7 @@ class Calculator extends StatefulWidget {
   State<Calculator> createState() => _CalculatorState();
 }
 
-class _CalculatorState extends State<Calculator> {
+class _CalculatorState extends State<Calculator> with SingleTickerProviderStateMixin {
 
   double firstNum=0.0;
   double secondNum=0.0;
@@ -24,6 +24,17 @@ class _CalculatorState extends State<Calculator> {
   var operation = ' ';
   var hideinput=false;
   var outputSize=48.0;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+  }
+
   onButtonClick(value){
 
     if(value=="AC"){
@@ -52,6 +63,8 @@ class _CalculatorState extends State<Calculator> {
           hideinput=true;
           outputSize=65;
         }
+        else
+          _showBlackSheet();
       }
     else{
       input=input+value;
@@ -59,6 +72,35 @@ class _CalculatorState extends State<Calculator> {
       outputSize=48;
     }
     setState(() {});
+  }
+
+  void _showBlackSheet() {
+    _animationController.forward();
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return AnimatedBuilder(
+          animation: _animationController,
+          builder: (BuildContext context, Widget? child) {
+            return Container(
+              height: MediaQuery.of(context).size.height * 0.75,
+              color: Colors.black.withOpacity(_animationController.value),
+              child: const Center(
+                child: Text(
+                  'NOTHING',
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontFamily: 'Nothing',
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -92,7 +134,7 @@ class _CalculatorState extends State<Calculator> {
               child: Container(
               width: 350,
               height: 260,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               color: numbackgroundcolor,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -190,9 +232,6 @@ class _CalculatorState extends State<Calculator> {
             ),
           ),
         ),
-
-
-
               button(text:"=", tColor: whitenumkey, buttonBgColor: rednumkey),
             ],
           ),
