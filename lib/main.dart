@@ -19,7 +19,7 @@ class _CalculatorState extends State<Calculator> {
 
   double firstNum=0.0;
   double secondNum=0.0;
-  var input="0";
+  var input="";
   var output=" ";
   var operation = ' ';
   var hideinput=false;
@@ -64,6 +64,12 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title:const Text("CALCULATOR", style: TextStyle(color: blacknumkey, fontFamily:'Jane', fontSize: 20, fontWeight: FontWeight.normal)),
+        centerTitle: true,
+        backgroundColor: backgroundcolor,
+        elevation: 0,
+      ),
       backgroundColor: backgroundcolor,
       body: Column(
         children: [
@@ -71,7 +77,7 @@ class _CalculatorState extends State<Calculator> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(12),
-            color: numbackgroundcolor,
+            color: backgroundcolor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -91,7 +97,7 @@ class _CalculatorState extends State<Calculator> {
                   color: blacknumkey,
                   fontFamily:'Nothing',
                 ),),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 ],
@@ -103,7 +109,7 @@ class _CalculatorState extends State<Calculator> {
                 button(text:"AC", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"()", tColor: whitenumkey, buttonBgColor: blacknumkey),
                 button(text:"%", tColor: whitenumkey, buttonBgColor: blacknumkey),
-                button(text:" ", tColor: whitenumkey, buttonBgColor: blacknumkey),
+                button(text:"<", tColor: whitenumkey, buttonBgColor: blacknumkey),
             ],
           ),
           Row(
@@ -134,7 +140,7 @@ class _CalculatorState extends State<Calculator> {
             children: [
               button(text:"0", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:".", tColor: blacknumkey, buttonBgColor: whitenumkey),
-              button(text:"<", tColor: blacknumkey, buttonBgColor: whitenumkey),
+              button(text:" ", tColor: blacknumkey, buttonBgColor: whitenumkey),
               button(text:"=", tColor: whitenumkey, buttonBgColor: rednumkey),
             ],
           ),
