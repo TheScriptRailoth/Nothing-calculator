@@ -22,7 +22,7 @@ Here are a few screenshots of the Nothing Calculator in action:
 ## Installation
 To install and use the Nothing Calculator app on your Nothing OS device, follow these steps:
 
-Clone this repository: git clone https://github.com/your-username/nothing-calculator.git
+Clone this repository: git clone https://github.com/TheScriptRailoth/nothing-calculator.git
 Transfer the app files to your Nothing OS device.
 Install the app on your device according to the instructions provided by the Nothing OS documentation.
 Launch the app from the app launcher on your Nothing OS device.
